@@ -3,10 +3,17 @@ const mazeGeneratorTwoBgPromise = import(
   "maze-generator-two/maze_generator_two_bg.wasm"
 );
 
-import canvas, { canvasWidth, canvasHeight } from "./gameCanvas";
+import { dataForm, dataFormData } from "./dataForm";
+import canvas, { resizeCanvas } from "./gameCanvas";
 import createShaderProgram from "./createShaderProgram";
 import setupBuffersAndProgram from "./setupBuffersAndProgram";
 import "./style.css";
+
+console.log(dataForm);
+console.log(dataFormData.get("mazeAlgoChoice"));
+
+const canvasWidth = 502;
+const canvasHeight = 502;
 
 const gl = canvas.getContext("webgl", {
   alpha: false,
@@ -15,8 +22,14 @@ const gl = canvas.getContext("webgl", {
   depth: false,
   powerPreference: "low-power",
 });
-gl.clearColor(0.0706, 0.0706, 0.0706, 1.0);
-gl.viewport(0, 0, canvasWidth, canvasHeight);
+
+function resizeGLCanvas(w, h) {
+  resizeCanvas(w, h);
+  gl.viewport(0, 0, w, h);
+}
+
+gl.clearColor(33 / 255, 37 / 255, 41 / 255, 1.0);
+resizeGLCanvas(canvasWidth, canvasHeight);
 
 if (gl === null || gl.getExtension("OES_element_index_uint") === null) {
   console.error("WebGL context with required features not found");
