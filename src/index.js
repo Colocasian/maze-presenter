@@ -53,7 +53,10 @@ dataForm.addEventListener("submit", () => {
                       Math.floor(Math.random() * 2147483647)
                     );
 
-                    const mzBuf = SqMzBuffer.new(0.25, mz);
+                    const mzBuf = SqMzBuffer.new(
+                      wallThickness / pathThickness,
+                      mz
+                    );
                     mz.free();
 
                     const mzVertices = new Float32Array(
@@ -77,6 +80,8 @@ dataForm.addEventListener("submit", () => {
                       gl.UNSIGNED_INT,
                       0
                     );
+
+                    mzBuf.free();
                   }
                 })
                 .catch((err) => {
