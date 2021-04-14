@@ -54,8 +54,8 @@ dataForm.addEventListener("submit", () => {
                     );
 
                     const mzBuf = SqMzBuffer.new(
-                      wallThickness / pathThickness,
-                      mz
+                      mz,
+                      wallThickness / pathThickness
                     );
                     mz.free();
 
