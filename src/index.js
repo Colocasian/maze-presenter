@@ -9,7 +9,8 @@ import createShaderProgram from "./createShaderProgram";
 import setupBuffersAndProgram from "./setupBuffersAndProgram";
 import "./style.css";
 
-dataForm.addEventListener("submit", () => {
+dataForm.addEventListener("submit", (e) => {
+  e.preventDefault();
   getFormValues()
     .then(
       ({ mazeAlgos, mazeWidth, mazeHeight, wallThickness, pathThickness }) => {
