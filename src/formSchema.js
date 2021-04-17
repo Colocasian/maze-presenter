@@ -3,7 +3,7 @@ import { object, string, number } from "yup";
 const formSchema = object().shape({
   mazeAlgos: string()
     .required("Maze algorithm is required")
-    .oneOf(["Dfs", "Kruskal"], "Invalid maze algorithm specified"),
+    .oneOf(["Dfs", "Kruskal", "Wilson"], "Invalid maze algorithm specified"),
   mazeWidth: number()
     .required("Maze width is required")
     .min(2, "Maze width must be atleast 2")
